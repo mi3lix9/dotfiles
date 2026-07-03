@@ -49,6 +49,19 @@ if ! command -v gh >/dev/null; then
   sudo apt-get install -y gh
 fi
 
+# gitleaks — secret scanner used by the pre-commit hook.
+# In apt on Ubuntu 25.10+; fall back to the release binary on older releases.
+if ! command -v gitleaks >/dev/null; then
+  log "Installing gitleaks"
+  if ! sudo apt-get install -y gitleaks 2>/dev/null; then
+    case "$(dpkg --print-architecture)" in amd64) GA=x64 ;; arm64) GA=arm64 ;; *) GA=$(dpkg --print-architecture) ;; esac
+    ver=$(curl -fsSL https://api.github.com/repos/gitleaks/gitleaks/releases/latest \
+      | grep -oE '"tag_name": *"v[^"]+"' | head -1 | grep -oE '[0-9.]+')
+    curl -fsSL "https://github.com/gitleaks/gitleaks/releases/download/v${ver}/gitleaks_${ver}_linux_${GA}.tar.gz" \
+      | sudo tar -xz -C /usr/local/bin gitleaks
+  fi
+fi
+
 # Make zsh the default shell
 if [ "${SHELL:-}" != "$(command -v zsh)" ]; then
   log "Setting zsh as default shell (may prompt for password)"

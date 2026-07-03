@@ -12,6 +12,7 @@ brew "jq"
 brew "starship"
 brew "zsh"
 brew "gh"
+brew "gitleaks"
 
 # GUI apps (uncomment what you use)
 # cask "ghostty"
