@@ -1,0 +1,9 @@
+# Copy to ~/.zshrc.local (gitignored, never committed) and fill in real values.
+# ~/.zshrc sources this file automatically if it exists.
+
+# export ANTHROPIC_API_KEY="sk-ant-..."
+# export OPENAI_API_KEY="sk-..."
+# export GITHUB_TOKEN="ghp_..."
+
+# Machine-specific overrides
+# export EDITOR="nvim"

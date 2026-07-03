@@ -1,0 +1,95 @@
+# ~/.zshrc — managed by chezmoi ({{ .chezmoi.os }})
+# Theme: Tokyo Night everywhere (starship prompt + fzf)
+
+# ── PATH ────────────────────────────────────────────────────────────────
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
+{{ if eq .chezmoi.os "darwin" -}}
+# ── Homebrew (macOS) ────────────────────────────────────────────────────
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+{{ end -}}
+
+# ── Oh My Zsh ───────────────────────────────────────────────────────────
+export ZSH="$HOME/.oh-my-zsh"
+
+# Empty theme: starship renders the prompt (see bottom of file).
+ZSH_THEME=""
+
+# nvm plugin: lazy-load nvm for fast shell startup, auto-switch on .nvmrc
+export NVM_DIR="$HOME/.nvm"
+zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' autoload yes
+
+# Case-insensitive completion + hyphen/underscore insensitivity
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
+# fzf-tab tweaks
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -la --color=always $realpath 2>/dev/null'
+
+plugins=(
+  git
+  docker
+  docker-compose
+  nvm
+  node
+  npm
+  sudo                 # press ESC-ESC to prepend sudo
+  command-not-found
+  colored-man-pages
+  extract              # `extract <anyarchive>`
+  z                    # jump to frequent dirs
+  fzf                  # ctrl-r / ctrl-t / alt-c
+  fzf-tab
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting   # MUST stay last
+)
+
+autoload -U compinit && compinit -u
+source "$ZSH/oh-my-zsh.sh"
+
+# ── History ─────────────────────────────────────────────────────────────
+HISTSIZE=100000
+SAVEHIST=100000
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY INC_APPEND_HISTORY
+
+# ── Tokyo Night fzf colors ──────────────────────────────────────────────
+export FZF_DEFAULT_OPTS="
+  --height 40% --layout=reverse --border
+  --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+  --color=fg+:#c0caf5,bg+:#292e42,hl+:#7dcfff
+  --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+  --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+command -v fdfind >/dev/null && export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git'
+command -v fd     >/dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+
+# ── Aliases ─────────────────────────────────────────────────────────────
+{{ if eq .chezmoi.os "linux" -}}
+command -v batcat >/dev/null && alias cat='batcat --paging=never' && alias bat='batcat'
+command -v fdfind >/dev/null && alias fd='fdfind'
+alias ll='ls -alhF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+{{ else -}}
+command -v bat >/dev/null && alias cat='bat --paging=never'
+alias ll='ls -alhFG'
+alias la='ls -AG'
+alias l='ls -CFG'
+{{ end -}}
+alias grep='grep --color=auto'
+alias dc='docker compose'
+alias dps='docker ps --format "table {{ "{{" }}.Names{{ "}}" }}\t{{ "{{" }}.Status{{ "}}" }}\t{{ "{{" }}.Ports{{ "}}" }}"'
+alias reload='exec zsh'
+
+# ── Prompt: Starship (Tokyo Night preset) ───────────────────────────────
+eval "$(starship init zsh)"
+
+# ── Machine-local / secret env — NOT tracked in git ─────────────────────
+# Put API keys, tokens, and machine-specific overrides here.
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

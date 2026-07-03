@@ -1,0 +1,10 @@
+# Never apply these to $HOME (belt-and-braces; they aren't in source anyway).
+.claude/.credentials.json
+.claude/.claude.json
+.claude/sessions/**
+.claude/projects/**
+.claude/history.jsonl
+.claude/shell-snapshots/**
+.zshrc.local
+.zsh_history
+.bash_history

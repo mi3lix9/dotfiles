@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+# pre-commit — block commits that contain secrets.
+# Prefers `gitleaks`; falls back to a regex scan if it isn't installed.
+#
+set -euo pipefail
+
+red()   { printf '\033[1;31m%s\033[0m\n' "$*"; }
+green() { printf '\033[1;32m%s\033[0m\n' "$*"; }
+
+if command -v gitleaks >/dev/null 2>&1; then
+  if ! gitleaks protect --staged --redact --no-banner; then
+    red "✖ gitleaks found a potential secret in staged changes. Commit blocked."
+    exit 1
+  fi
+  green "✔ gitleaks: no secrets in staged changes"
+  exit 0
+fi
+
+# ── Fallback scan (no gitleaks installed) ───────────────────────────────────
+red "! gitleaks not found — using basic fallback scan."
+red "  Install for real coverage:  brew install gitleaks   (or)  apt install gitleaks"
+
+PATTERNS='(BEGIN (RSA|OPENSSH|EC|DSA|PGP) PRIVATE KEY|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]+|-----BEGIN PRIVATE KEY-----|AIza[0-9A-Za-z_-]{35})'
+
+FAIL=0
+while IFS= read -r file; do
+  [ -f "$file" ] || continue
+  # Skip the scanner's own files — they contain secret *patterns*, not secrets.
+  case "$file" in .githooks/*|.gitleaks.toml) continue ;; esac
+  if git show ":$file" 2>/dev/null | grep -EnI "$PATTERNS" >/dev/null; then
+    red "✖ Possible secret in: $file"
+    FAIL=1
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACM)
+
+if [ "$FAIL" -ne 0 ]; then
+  red "Commit blocked. If this is a false positive, review carefully then use --no-verify."
+  exit 1
+fi
+
+green "✔ fallback scan: no obvious secrets"
+exit 0

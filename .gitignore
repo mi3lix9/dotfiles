@@ -1,0 +1,36 @@
+# ── Secrets & credentials — never commit ───────────────────────────────────
+*.local
+.zshrc.local
+.env
+*.env
+.envrc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+id_ecdsa*
+*_rsa
+*_dsa
+.credentials.json
+credentials.json
+.claude.json
+*token*
+*secret*
+*password*
+
+# ── Claude Code machine/account state (not config) ──────────────────────────
+.claude/.credentials.json
+.claude/sessions/
+.claude/projects/
+.claude/history.jsonl
+.claude/shell-snapshots/
+.claude/cache/
+.claude/downloads/
+
+# ── Shell / OS noise ────────────────────────────────────────────────────────
+*_history
+.DS_Store
+Thumbs.db

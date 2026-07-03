@@ -1,0 +1,20 @@
+# Brewfile — `brew bundle` installs everything here.
+# Mirror of the Linux CLI stack, plus macOS niceties.
+
+brew "git"
+brew "curl"
+brew "wget"
+brew "fzf"
+brew "bat"
+brew "fd"
+brew "ripgrep"
+brew "jq"
+brew "starship"
+brew "zsh"
+brew "gh"
+
+# GUI apps (uncomment what you use)
+# cask "ghostty"
+# cask "visual-studio-code"
+# cask "raycast"
+# cask "rectangle"
