@@ -1,6 +1,9 @@
 # Brewfile — `brew bundle` installs everything here.
 # Mirror of the Linux CLI stack, plus macOS niceties.
 
+# Third-party taps (install-macos.sh runs `brew trust` on these first).
+tap "nikitabobko/tap"   # AeroSpace window manager
+
 brew "git"
 brew "curl"
 brew "wget"

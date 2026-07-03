@@ -13,6 +13,12 @@ if ! command -v brew >/dev/null; then
 fi
 eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
 
+# AeroSpace ships in a third-party tap; recent Homebrew refuses casks from
+# untrusted taps, so tap + trust it before bundling.
+log "Trusting nikitabobko/tap (AeroSpace)"
+brew tap nikitabobko/tap >/dev/null 2>&1 || true
+brew trust nikitabobko/tap >/dev/null 2>&1 || true
+
 log "brew bundle"
 brew bundle --file="$HERE/Brewfile"
 
