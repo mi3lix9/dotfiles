@@ -25,7 +25,10 @@ PACKAGES=(
   jq
   unzip
   build-essential
+  btop
 )
+# Note: yazi and herdr are not in apt. Install yazi via cargo/release binary
+# (see https://yazi-rs.github.io/docs/installation) and herdr via its installer.
 
 log "Installing: ${PACKAGES[*]}"
 sudo apt-get install -y "${PACKAGES[@]}"

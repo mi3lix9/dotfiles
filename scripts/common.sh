@@ -31,4 +31,11 @@ if [ ! -d "$HOME/.nvm" ]; then
     "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
 fi
 
+# ── yazi plugins ──────────────────────────────────────────────────────────
+# Restore plugins pinned in dot_config/yazi/package.toml (e.g. clipboard.yazi).
+if command -v ya >/dev/null; then
+  log "Restoring yazi plugins (ya pack -i)"
+  ya pack -i || true
+fi
+
 log "common.sh done"

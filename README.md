@@ -12,8 +12,13 @@ app-install scripts — one command to set up a fresh machine.
 ├── .chezmoiroot            # tells chezmoi the source lives in home/
 ├── home/                   # chezmoi source (maps to $HOME)
 │   ├── dot_zshrc.tmpl      # → ~/.zshrc  (templated per-OS)
+│   ├── dot_aerospace.toml  # → ~/.aerospace.toml  (macOS tiling WM)
 │   ├── dot_config/
-│   │   └── starship.toml   # → ~/.config/starship.toml
+│   │   ├── starship.toml   # → ~/.config/starship.toml
+│   │   ├── ghostty/config  # terminal emulator
+│   │   ├── yazi/           # file manager (keymap + plugin manifest)
+│   │   ├── btop/           # system monitor
+│   │   └── herdr/config.toml   # terminal multiplexer (replaces tmux)
 │   └── dot_claude/
 │       ├── settings.json   # → ~/.claude/settings.json
 │       └── skills/         # → ~/.claude/skills/  (agent skills)

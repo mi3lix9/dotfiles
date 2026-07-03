@@ -8,3 +8,14 @@
 .zshrc.local
 .zsh_history
 .bash_history
+
+# herdr runtime state & logs — config.toml is tracked, these never are.
+.config/herdr/session.json
+.config/herdr/session-history.json
+.config/herdr/release-notes.json
+.config/herdr/*.log
+
+# macOS-only apps — skip on other OSes.
+{{ if ne .chezmoi.os "darwin" -}}
+.aerospace.toml
+{{ end -}}

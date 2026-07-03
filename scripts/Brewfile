@@ -13,9 +13,15 @@ brew "starship"
 brew "zsh"
 brew "gh"
 brew "gitleaks"
+brew "btop"          # system monitor (config: dot_config/btop)
+brew "yazi"          # terminal file manager (config: dot_config/yazi)
+
+# herdr (terminal multiplexer, replaces tmux) is not in Homebrew —
+# install via its own installer, e.g.:  curl -fsSL https://herdr.dev/install | sh
 
 # GUI apps (uncomment what you use)
-# cask "ghostty"
+cask "ghostty"       # terminal emulator (config: dot_config/ghostty)
+cask "nikitabobko/tap/aerospace"   # tiling window manager (config: dot_aerospace.toml)
 # cask "visual-studio-code"
 # cask "raycast"
 # cask "rectangle"
