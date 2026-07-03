@@ -28,16 +28,27 @@ app-install scripts — one command to set up a fresh machine.
 
 ## Install on a new machine
 
+Clone and run the bootstrap:
+
 ```sh
-GH_USER=mi3lix9 \
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/mi3lix9/dotfiles/main/install.sh)"
+git clone https://github.com/mi3lix9/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./install.sh
 ```
 
-Or from a clone:
+Or one-liner (no clone):
 
 ```sh
-git clone https://github.com/mi3lix9/dotfiles.git
-cd dotfiles && ./install.sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/mi3lix9/dotfiles/main/install.sh)"
+```
+
+### Using this as your own dotfiles
+
+Fork the repo, then either edit the `mi3lix9` default in `install.sh`, or point
+the bootstrap at your fork without editing anything:
+
+```sh
+DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/install.sh)"
 ```
 
 ## Daily use

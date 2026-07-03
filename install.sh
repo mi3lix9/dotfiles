@@ -2,12 +2,14 @@
 #
 # install.sh — one-shot bootstrap. Installs apps, then applies dotfiles.
 #
-# Fresh machine (remote):
-#   GH_USER=your-username \
-#     sh -c "$(curl -fsSL https://raw.githubusercontent.com/mi3lix9/dotfiles/main/install.sh)"
-#
-# From a local clone:
+# From a local clone (recommended):
 #   ./install.sh
+#
+# Fresh machine, no clone:
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/mi3lix9/dotfiles/main/install.sh)"
+#
+# Using a fork without editing this file:
+#   DOTFILES_REPO=https://github.com/<you>/dotfiles.git sh -c "$(curl -fsSL .../install.sh)"
 #
 set -euo pipefail
 
