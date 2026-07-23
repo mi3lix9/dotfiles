@@ -28,8 +28,9 @@ esac
 log "Detected OS: $OS"
 
 # ── 2. Locate the repo (local clone vs remote bootstrap) ───────────────────
-if [ -n "${BASH_SOURCE[0]:-}" ] && [ -d "$(dirname "${BASH_SOURCE[0]}")/scripts" ]; then
-  HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SELF="${BASH_SOURCE:-$0}"
+if [ -f "$SELF" ] && [ -d "$(dirname "$SELF")/scripts" ]; then
+  HERE="$(cd "$(dirname "$SELF")" && pwd)"
   log "Using local repo at $HERE"
 else
   # Bootstrapped via curl — chezmoi will clone the repo itself in step 4.
