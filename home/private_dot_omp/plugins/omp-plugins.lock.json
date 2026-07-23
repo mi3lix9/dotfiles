@@ -1,0 +1,15 @@
+{
+  "plugins": {
+    "@firstpick/pi-skill-patch-md": {
+      "version": "0.1.3",
+      "enabledFeatures": null,
+      "enabled": true
+    },
+    "pi-artifacts": {
+      "version": "0.1.0",
+      "enabledFeatures": null,
+      "enabled": true
+    }
+  },
+  "settings": {}
+}

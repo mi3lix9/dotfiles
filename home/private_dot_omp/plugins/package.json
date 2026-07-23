@@ -1,0 +1,8 @@
+{
+  "name": "omp-plugins",
+  "private": true,
+  "dependencies": {
+    "@firstpick/pi-skill-patch-md": "npm:@firstpick/pi-skill-patch-md",
+    "pi-artifacts": "npm:pi-artifacts"
+  }
+}

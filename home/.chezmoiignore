@@ -9,6 +9,23 @@
 .zsh_history
 .bash_history
 
+# omp (Oh My Pi): track config/agents/extensions/plugin manifests only.
+# Everything below is machine-local state, caches, secrets, or reinstallable.
+.omp/agent/*.db
+.omp/agent/*.db-*
+.omp/agent/sessions/**
+.omp/agent/terminal-sessions/**
+.omp/agent/blobs/**
+.omp/agent/cache/**
+.omp/agent/last-changelog-version
+.omp/cache/**
+.omp/logs/**
+.omp/run/**
+.omp/puppeteer/**
+.omp/install-id
+.omp/gpu_cache.json
+.omp/plugins/node_modules/**
+
 # herdr runtime state & logs — config.toml is tracked, these never are.
 .config/herdr/session.json
 .config/herdr/session-history.json
