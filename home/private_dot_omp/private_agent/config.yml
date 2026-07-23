@@ -1,0 +1,15 @@
+providers: 
+  webSearch: auto
+symbolPreset: unicode
+theme: 
+  dark: dark-tokyo-night
+setupVersion: 1
+modelRoles:
+  default: anthropic/claude-opus-4-8
+  slow: anthropic/claude-fable-5
+  smol: anthropic/claude-sonnet-5
+  tiny: anthropic/claude-haiku-4-5
+  advisor: anthropic/claude-fable-5:medium
+defaultThinkingLevel: auto
+advisor:
+  enabled: false
