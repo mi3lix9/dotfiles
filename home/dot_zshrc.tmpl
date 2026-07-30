@@ -33,6 +33,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -la --color=always $realpath 2>/dev/null'
 
 plugins=(
+  rust                 # completions for rustc, rustup, and cargo
   git
   docker
   docker-compose
@@ -93,3 +94,4 @@ eval "$(starship init zsh)"
 # ── Machine-local / secret env — NOT tracked in git ─────────────────────
 # Put API keys, tokens, and machine-specific overrides here.
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"

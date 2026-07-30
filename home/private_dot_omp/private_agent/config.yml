@@ -1,15 +1,20 @@
-providers: 
-  webSearch: auto
+providers:
+  {}
 symbolPreset: unicode
-theme: 
+theme:
   dark: dark-tokyo-night
 setupVersion: 1
 modelRoles:
-  default: anthropic/claude-opus-4-8
-  slow: anthropic/claude-fable-5
-  smol: anthropic/claude-sonnet-5
-  tiny: anthropic/claude-haiku-4-5
-  advisor: anthropic/claude-fable-5:medium
+  default: openai-codex/gpt-5.6-sol
+  slow: openai-codex/gpt-5.6-sol
+  smol: openai-codex/gpt-5.6-terra
+  tiny: openai-codex/gpt-5.6-luna
+  advisor: openai-codex/gpt-5.6-sol:max
 defaultThinkingLevel: auto
 advisor:
   enabled: false
+dev:
+  autoqaConsent: granted
+task:
+  agentModelOverrides:
+    task: openai-codex/gpt-5.6-sol:medium

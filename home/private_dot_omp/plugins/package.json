@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@firstpick/pi-skill-patch-md": "npm:@firstpick/pi-skill-patch-md",
-    "pi-artifacts": "npm:pi-artifacts"
+    "pi-artifacts": "npm:pi-artifacts",
+    "pi-hermes-memory": "npm:pi-hermes-memory",
+    "pi-rtk-optimizer": "npm:pi-rtk-optimizer"
   }
 }

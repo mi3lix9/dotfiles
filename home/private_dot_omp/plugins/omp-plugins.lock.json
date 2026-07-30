@@ -9,6 +9,16 @@
       "version": "0.1.0",
       "enabledFeatures": null,
       "enabled": true
+    },
+    "pi-hermes-memory": {
+      "version": "0.8.2",
+      "enabledFeatures": null,
+      "enabled": true
+    },
+    "pi-rtk-optimizer": {
+      "version": "0.9.0",
+      "enabledFeatures": null,
+      "enabled": true
     }
   },
   "settings": {}

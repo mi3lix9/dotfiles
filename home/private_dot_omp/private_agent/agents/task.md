@@ -4,7 +4,7 @@ description: General-purpose subagent with full capabilities for delegated multi
 spawns: "*"
 model: 
   - "@default"
-thinkingLevel: auto
+thinkingLevel: medium
 ---
 
 You are a worker agent for delegated tasks.
