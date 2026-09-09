@@ -22,6 +22,9 @@ brew "yazi"          # terminal file manager (config: dot_config/yazi)
 # herdr (terminal multiplexer, replaces tmux) is not in Homebrew —
 # install via its own installer, e.g.:  curl -fsSL https://herdr.dev/install | sh
 
+# Pi coding agent is not in Homebrew — installed via npm in scripts/common.sh:
+#   npm install -g @earendil-works/pi-coding-agent
+
 # GUI apps (uncomment what you use)
 cask "ghostty"       # terminal emulator (config: dot_config/ghostty)
 cask "nikitabobko/tap/aerospace"   # tiling window manager (config: dot_aerospace.toml)

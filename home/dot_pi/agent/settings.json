@@ -1,0 +1,24 @@
+{
+  "packages": [
+    "npm:pi-subagents",
+    "npm:pi-mcp-adapter",
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:context-mode",
+    "npm:pi-lens",
+    "npm:@narumitw/pi-goal",
+    "npm:bigpowers",
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-hermes-memory",
+    "npm:@narumitw/pi-btw",
+    "npm:pi-hashline-edit-pro",
+    "npm:@narumitw/pi-usage",
+    "npm:pi-markdown-preview",
+    "npm:@narumitw/pi-statusline",
+    "npm:@narumitw/pi-retry",
+    "npm:@plannotator/pi-extension"
+  ],
+  "lastChangelogVersion": "0.85.1",
+  "theme": "dark"
+}

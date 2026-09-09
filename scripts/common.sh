@@ -31,6 +31,15 @@ if [ ! -d "$HOME/.nvm" ]; then
     "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
 fi
 
+# ── Pi coding agent ───────────────────────────────────────────────────────
+# Global CLI; packages in ~/.pi/agent/settings.json install on first `pi` launch.
+if command -v npm >/dev/null; then
+  if ! command -v pi >/dev/null; then
+    log "Installing Pi coding agent"
+    npm install -g @earendil-works/pi-coding-agent
+  fi
+fi
+
 # ── yazi plugins ──────────────────────────────────────────────────────────
 # Restore plugins pinned in dot_config/yazi/package.toml (e.g. clipboard.yazi).
 if command -v ya >/dev/null; then

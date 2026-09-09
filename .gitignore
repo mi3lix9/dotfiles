@@ -30,6 +30,26 @@ credentials.json
 .claude/cache/
 .claude/downloads/
 
+# ── Pi coding agent — secrets & runtime state (not config) ──────────────────
+# Tracked: settings.json, caveman.json, zentui.json, extensions/*.ts
+# Never: auth, sessions, package installs, memory, caches, machine trust.
+**/.pi/agent/auth.json
+**/.pi/agent/sessions/
+**/.pi/agent/npm/
+**/.pi/agent/git/
+**/.pi/agent/pi-hermes-memory/
+**/.pi/agent/projects-memory/
+**/.pi/agent/*.sqlite*
+**/.pi/agent/mcp-cache.json
+**/.pi/agent/models-store.json
+**/.pi/agent/missions/
+**/.pi/agent/fff/
+**/.pi/agent/cursor-sdk-*.json
+**/.pi/agent/trust.json
+**/.pi/context-mode/
+**/.pi/web-search-cache/
+**/dot_pi/agent/auth.json
+
 # ── Shell / OS noise ────────────────────────────────────────────────────────
 *_history
 .DS_Store

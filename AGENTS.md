@@ -22,7 +22,7 @@ Cross-platform (macOS + Linux) dotfiles managed with
 ## Security — this repo is PUBLIC
 
 - **Never commit secrets**: no API keys, tokens, private keys,
-  `.credentials.json`, `.claude.json`, or shell history.
+  `.credentials.json`, `.claude.json`, `~/.pi/agent/auth.json`, or shell history.
 - Machine-local secrets live in `~/.zshrc.local` (gitignored, auto-sourced by
   `~/.zshrc`). See `zshrc.local.example`.
 - A `pre-commit` hook scans staged changes for secrets. Keep it enabled:
@@ -34,3 +34,6 @@ Cross-platform (macOS + Linux) dotfiles managed with
 - `install.sh` bootstraps a machine: apps via `scripts/`, then `chezmoi apply`.
 - When adding a package, update **both** `scripts/install-linux.sh` (apt) and
   `scripts/Brewfile` (macOS) so the two platforms stay in sync.
+- Pi (`@earendil-works/pi-coding-agent`) is installed with npm in `scripts/common.sh`.
+  Packages listed in `home/dot_pi/agent/settings.json` are installed by Pi on first launch.
+  Never `chezmoi add ~/.pi` wholesale — `auth.json`, sessions, npm, and memory stay local.

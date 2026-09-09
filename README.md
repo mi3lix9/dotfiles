@@ -1,7 +1,7 @@
 # dotfiles
 
 Cross-platform (macOS + Linux) dotfiles managed with
-[chezmoi](https://chezmoi.io). Configs, Claude Code settings, agent skills, and
+[chezmoi](https://chezmoi.io). Configs, Claude Code and Pi settings, agent skills, and
 app-install scripts — one command to set up a fresh machine.
 
 ## Layout
@@ -19,6 +19,11 @@ app-install scripts — one command to set up a fresh machine.
 │   │   ├── yazi/           # file manager (keymap + plugin manifest)
 │   │   ├── btop/           # system monitor
 │   │   └── herdr/config.toml   # terminal multiplexer (replaces tmux)
+│   ├── dot_pi/agent/          # → ~/.pi/agent/  (Pi coding agent)
+│   │   ├── settings.json      # packages + theme (auth.json is NOT tracked)
+│   │   ├── caveman.json       # terse-mode defaults
+│   │   ├── zentui.json        # TUI layout
+│   │   └── extensions/        # local Pi extensions (e.g. herdr)
 │   └── dot_claude/
 │       ├── settings.json   # → ~/.claude/settings.json
 │       └── skills/         # → ~/.claude/skills/  (agent skills)
@@ -71,6 +76,7 @@ chezmoi update            # git pull + apply (sync another machine)
 Nothing secret lives in this repo. Machine-local values (API keys, tokens) go in
 `~/.zshrc.local`, which is gitignored and sourced automatically by `~/.zshrc`.
 Copy `zshrc.local.example` to `~/.zshrc.local` to start.
+Pi credentials live in `~/.pi/agent/auth.json` (gitignored). Do not add that file.
 
 A `pre-commit` hook scans staged changes for secrets before every commit. Enable
 it once per clone:

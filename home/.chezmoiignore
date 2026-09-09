@@ -32,6 +32,25 @@
 .config/herdr/release-notes.json
 .config/herdr/*.log
 
+
+# Pi coding agent — track settings/zentui/caveman/extensions only.
+# auth.json holds API keys and OAuth tokens; never apply or commit it.
+.pi/agent/auth.json
+.pi/agent/sessions/**
+.pi/agent/npm/**
+.pi/agent/git/**
+.pi/agent/pi-hermes-memory/**
+.pi/agent/projects-memory/**
+.pi/agent/*.sqlite*
+.pi/agent/mcp-cache.json
+.pi/agent/models-store.json
+.pi/agent/missions/**
+.pi/agent/fff/**
+.pi/agent/cursor-sdk-*.json
+.pi/agent/trust.json
+.pi/context-mode/**
+.pi/web-search-cache/**
+
 # macOS-only apps — skip on other OSes.
 {{ if ne .chezmoi.os "darwin" -}}
 .aerospace.toml
