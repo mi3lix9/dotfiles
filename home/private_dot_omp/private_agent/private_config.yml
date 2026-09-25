@@ -1,0 +1,71 @@
+providers:
+  openai-codex:
+    codeMode: auto
+symbolPreset: unicode
+theme:
+  dark: dark-tokyo-night
+setupVersion: 2
+modelRoles:
+  default: anthropic/claude-opus-5-5:medium
+  slow: openai-codex/gpt-6-astra:low
+  smol: openai-codex/gpt-5.6-sol:low
+  tiny: openai-codex/gpt-5.6-luna:low
+  advisor: "@slow"
+  task: "@smol"
+  designer: anthropic/claude-opus-5-5:medium
+  plan: anthropic/claude-opus-5-5:high
+  commit: "@tiny"
+  dictation: local/whisper-large-v3-turbo
+  judge: openrouter-jev/~typesafe/jev-latest
+defaultThinkingLevel: medium
+cycleOrder:
+  - tiny
+  - default
+  - slow
+advisor:
+  enabled: false
+dev:
+  autoqaConsent: granted
+composer:
+  shape: pi
+  tokenRate: true
+task:
+  enableLsp: true
+  isolation:
+    enabled: false
+  eager: always
+  enableEffort: false
+prewalk:
+  enabled: false
+stt:
+  enabled: true
+retry:
+  fallbackChains:
+    dictation:
+      - local/parakeet-tdt-0.6b-v3
+    openai-codex/gpt-5.6-sol:
+      - anthropic/claude-opus-5-5
+    openai-codex/gpt-5.6-luna:
+      - anthropic/claude-sonnet-5
+    openai-codex/gpt-6-astra:
+      - anthropic/claude-opus-5-5
+marketplace:
+  autoUpdate: auto
+compaction:
+  methodOrder:
+    - remote
+    - snapcompact
+    - handoff
+    - soft
+    - shake
+autolearn:
+  enabled: true
+  autoContinue: false
+lsp:
+  formatOnWrite: true
+plan:
+  enabled: false
+spelling:
+  typoDetection: true
+github:
+  enabled: true
