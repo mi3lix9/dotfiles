@@ -7,9 +7,9 @@ theme:
 setupVersion: 2
 modelRoles:
   default: anthropic/claude-opus-5-5:medium
-  slow: openai-codex/gpt-6-astra:low
+  slow: anthropic/claude-opus-5-5:high
   smol: anthropic/claude-opus-5-5:low
-  tiny: openai-codex/gpt-5.6-luna:low
+  tiny: openai-codex/gpt-6-luna:low
   advisor: "@slow"
   task: anthropic/claude-opus-5-5:low
   designer: anthropic/claude-opus-5-5:medium
@@ -35,6 +35,8 @@ task:
     enabled: false
   eager: always
   enableEffort: false
+  agentModelOverrides:
+    reviewer: openai-codex/gpt-6-astra
 prewalk:
   enabled: false
 stt:
