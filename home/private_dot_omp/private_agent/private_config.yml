@@ -7,7 +7,7 @@ theme:
 setupVersion: 2
 modelRoles:
   default: anthropic/claude-opus-5-5:medium
-  slow: anthropic/claude-opus-5-5:high
+  slow: openai-codex/gpt-6-astra:low
   smol: anthropic/claude-opus-5-5:low
   tiny: openai-codex/gpt-6-luna:low
   advisor: "@slow"
